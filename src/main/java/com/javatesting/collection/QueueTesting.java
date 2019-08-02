@@ -87,8 +87,6 @@ public class QueueTesting {
 		//displayQueue(queueArray);
 	}
 
-
-	
 	
 	private static void displayQueue() {
 		int total = queueArray.length - tail;
@@ -96,7 +94,7 @@ public class QueueTesting {
 		Object[] tmpQueueArray = new Object[total-1];
 		System.arraycopy(queueArray, tail+1, tmpQueueArray, 0, total-1);
 		queueArray = tmpQueueArray ;
-		tail = 0;
+		tail = -1;
 		queueList = Arrays.asList(tmpQueueArray);
 		for (Iterator iterator = queueList.iterator(); iterator.hasNext();) {
 			Object object = (Object) iterator.next();
