@@ -29,11 +29,13 @@ public class LinkedHashMapExample {
 	     hmap.put("3", "CC");
 	     hmap.put("9", "CC");
 	     hmap.put("8", "CC");
-	     hmap.put("7", "CC");
+	     hmap.put("he", "CC");
 	     hmap.put("5", "KK");
 	     
 	     // Displaying HashMap elements
-	     System.out.println("HashMap contains: "+hmap);
+	     System.out.println("HashMap computeIfAbsent: " + hmap.computeIfAbsent("18", k -> "NEW" + "CCCC"));
+	     System.out.println("HashMap contains: " + hmap.putIfAbsent("88", "CCCC"));
+
 	     
 	     // Getting a Set of Key-value pairs
 	     Set entrySet = hmap.entrySet();
