@@ -16,7 +16,7 @@ public class FailFastTest {
 		final ArrayList<String> names = new ArrayList<String>();
 		names.add("User1");
 		names.add("User2");
-		names.add("User3");
+		names.add("User3"); 
 		names.add("User4");
 
 		// Lets consider a possibility of sharing this ArrayList with two threads
