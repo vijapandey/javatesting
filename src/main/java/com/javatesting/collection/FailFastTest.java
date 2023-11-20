@@ -12,20 +12,26 @@ import java.util.Iterator;
  *
  */
 public class FailFastTest {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		final ArrayList<String> names = new ArrayList<String>();
 		names.add("User1");
 		names.add("User2");
 		names.add("User3"); 
 		names.add("User4");
 
+		Iterator<String> i = names.iterator();
+		while(i.hasNext()) {
+			System.out.println(i.next());
+			names.add("asd");
+		}
+	
 		// Lets consider a possibility of sharing this ArrayList with two threads
 
 		// This thread will print the list items
 		Thread displayThread = new Thread() {
 			public void run() {
 				try {
-					Iterator i = names.iterator();
+					Iterator<String> i = names.iterator();
 					while (i.hasNext()) {
 						System.out.println(i.next());
 						Thread.sleep(5000);
@@ -37,7 +43,7 @@ public class FailFastTest {
 			}
 		};
 		displayThread.start();
-		// Thread.sleep(5000);
+		//Thread.sleep(5000);
 		Thread removeUserThread = new Thread() {
 			public void run() {
 				try {

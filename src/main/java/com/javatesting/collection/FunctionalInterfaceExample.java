@@ -61,7 +61,7 @@ public class FunctionalInterfaceExample {
 		{
 		    studentNames.add(nameFunction.apply(student));
 		}
-		System.out.println(studentNames);
+		System.out.println("testFunction :" + studentNames);
 		
 	}
 
