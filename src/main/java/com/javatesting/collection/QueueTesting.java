@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.PriorityBlockingQueue;
 
@@ -28,47 +29,48 @@ public class QueueTesting {
 	public static void main(String[] args) throws InterruptedException {
 		// ArrayDeque<Object> a = new ArrayDeque<Object>();
 
-		System.out.println("Queue and Deque  Examples");
-		// queueAndDeque();
+		// System.out.println("Queue and Deque Examples");
+		 queueAndDeque();
 
 		// queueAndDequeUsingArray();
 
-		//BlockingQueue interface implementation:: ArrayBlockingQueue, LinkedBlockingQueue, PriorityBlockingQueue, SynchronousQueue etc.
-		arrayBlockingQueueDemo();
-		linkedBlockingQueueDemo();
+		// BlockingQueue interface implementation:: ArrayBlockingQueue,
+		// LinkedBlockingQueue, PriorityBlockingQueue, SynchronousQueue etc.
+		// arrayBlockingQueueDemo();
+		// linkedBlockingQueueDemo();
 		priorityBlockingQueue();
 	}
 
 	private static void priorityBlockingQueue() throws InterruptedException {
-		 // create object of PriorityBlockingQueue 
-        // using PriorityBlockingQueue() constructor 
-        PriorityBlockingQueue<ModelClass> pbq = new PriorityBlockingQueue<ModelClass>(); 
-  
-        // add  numbers 
-        pbq.addAll(getList());
-        
-        // print queue 
-        System.out.println("PriorityBlockingQueue:" ); 
-        for (Iterator<ModelClass> itr = pbq.iterator(); itr.hasNext();) {
+		System.out.println("PriorityBlockingQueue:");
+
+		// create object of PriorityBlockingQueue
+		// using PriorityBlockingQueue() constructor
+		PriorityBlockingQueue<ModelClass> pbq = new PriorityBlockingQueue<ModelClass>();
+
+		// add numbers
+		pbq.addAll(getList());
+
+		// print queue
+		for (Iterator<ModelClass> itr = pbq.iterator(); itr.hasNext();) {
 			System.out.print(itr.next().getId() + " ");
 		}
-        
-      //Comparator for name field  Java 8 lambda based comparator syntax and verify the result
-        Comparator<ModelClass> nameSorter = Comparator.comparing(ModelClass::getName);
-        PriorityBlockingQueue<ModelClass> priorityBlockingQueue = new PriorityBlockingQueue<>( 11, nameSorter );
-        priorityBlockingQueue.addAll(getList());
-        while(true) 
-        {
-        	ModelClass e = priorityBlockingQueue.take();
-            
-            if(e == null) break;
-            else {
-            	System.out.println(e.getId() + ":::: "  +e.getName() +"\n");
-            }
-        }
-       
-        
-        
+
+		// Comparator for name field Java 8 lambda based comparator syntax and verify
+		// the result
+		Comparator<ModelClass> nameSorter = Comparator.comparing(ModelClass::getName);
+		PriorityBlockingQueue<ModelClass> priorityBlockingQueue = new PriorityBlockingQueue<>(11, nameSorter);
+		priorityBlockingQueue.addAll(getList());
+		while (true) {
+			ModelClass e = priorityBlockingQueue.take();
+
+			if (e == null)
+				break;
+			else {
+				System.out.println(e.getId() + ":::: " + e.getName() + "\n");
+			}
+		}
+
 	}
 
 	private static void linkedBlockingQueueDemo() {
@@ -76,7 +78,7 @@ public class QueueTesting {
 		int capacity = 15;
 
 		// create object of LinkedBlockingQueue
-		LinkedBlockingQueue<Integer> lbq = new LinkedBlockingQueue<Integer>(capacity);
+		LinkedBlockingQueue<Integer> lbq = new LinkedBlockingQueue<Integer>();
 
 		// add numbers
 		lbq.add(1);
@@ -88,20 +90,28 @@ public class QueueTesting {
 
 	}
 
-	private static void arrayBlockingQueueDemo() {
+	private static void arrayBlockingQueueDemo() throws InterruptedException {
+		System.out.println("Blocking Queue Example : arrayBlockingQueueDemo");
 		// define capacity of ArrayBlockingQueue
-		int capacity = 15;
+		int capacity = 3;
 		// create object of ArrayBlockingQueue
 		// using ArrayBlockingQueue(int initialCapacity)
 		// constructor
-		ArrayBlockingQueue<Integer> abq = new ArrayBlockingQueue<Integer>(capacity);
+		BlockingQueue<Integer> abq = new ArrayBlockingQueue<Integer>(capacity);
 
 		// add numbers
 		abq.add(1);
 		abq.add(2);
 		abq.add(3);
+
 		// print queue
 		System.out.println("ArrayBlockingQueue:" + abq);
+		System.out.println("ArrayBlockingQueue remove:" + abq.remove());
+		abq.offer(4);
+		System.out.println("ArrayBlockingQueue:" + abq);
+		// System.out.println("ArrayBlockingQueue wait take:" + abq.take());
+
+		System.out.println("ArrayBlockingQueue take:" + abq.poll());
 	}
 
 	private static void queueAndDeque() {
@@ -242,7 +252,7 @@ public class QueueTesting {
 		}
 		return initialCapacity;
 	}
-	
+
 	private static List<ModelClass> getList() {
 		List<ModelClass> listOfModelClasss = new ArrayList<ModelClass>();
 		listOfModelClasss.add(new ModelClass(111, "John", 81));

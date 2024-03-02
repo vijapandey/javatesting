@@ -4,7 +4,8 @@
 package com.javatesting.collection;
 
 /**
- * @author vijpande Java 8 Lambda Expressions can be defined as methods without
+ * @author vijpande 
+ * 			Java 8 Lambda Expressions can be defined as methods without
  *         names i.e anonymous functions. Like methods, they can have
  *         parameters, a body, a return type and possible list of exceptions
  *         that can be thrown

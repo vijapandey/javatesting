@@ -21,6 +21,10 @@ public class ModelClass implements Serializable, Comparable {
 	public ModelClass() {
 	}
 
+	static {
+		System.out.println("BLOCK execting ......");
+	}
+
 	public ModelClass(Integer id, String name, int age) {
 		this.id = id;
 		this.name = name;
@@ -110,12 +114,12 @@ public class ModelClass implements Serializable, Comparable {
 		listOfModelClasss.add(new ModelClass(101010, "Chris", 19));
 		return listOfModelClasss;
 	}
-	
+
 	public static void displayModelClass(List<ModelClass> listOfModelClasss) {
 		System.out.println("############  List size  :" + listOfModelClasss.size());
 		for (ModelClass model : listOfModelClasss) {
 			System.out.println(model.getId() + ":  " + model.getName() + " : " + model.getAge());
 		}
 	}
-	
+
 }
